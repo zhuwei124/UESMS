@@ -1,0 +1,75 @@
+﻿body {
+
+    margin:0px;
+    padding:0px;
+    width:1000px;
+    font-family:'Microsoft PhagsPa';
+}
+#row_first
+{
+    height:80px;
+    position:relative;
+    margin:20px 10px auto 10px;
+}
+#head_left
+{
+    height:100px;
+        text-align:center;
+    float:left;
+}
+
+#head_left h1 
+{
+    padding-top:20px;
+    font-size: 45px;
+    width: 200px;
+    color:firebrick;
+    font-family:'Microsoft JhengHei UI';
+}
+#row_first p
+{
+    font-size:medium;
+    width:200px;
+    padding-top:30px;
+
+}
+#topMenu
+{
+    position:absolute;
+    top:30px;
+    left:360px;
+    }
+#topMenu li
+{
+    text-align:center;
+    float:left;
+    padding:20px 10px 0;
+    border-left:1px #ddd solid;
+    width: 70px;
+    font-family:'Microsoft YaHei';
+}
+#topMenu a
+{
+    text-decoration:none;
+    color:gray;
+}
+#row_second hr
+{
+    height:7px;
+    color:red;
+    border-style:outset;
+}
+#row_third
+{
+    background-image:url(back.png);
+    background-repeat:no-repeat;
+    background-position:center;
+    height:485px;
+    text-align:center;
+}
+#row_third hr
+{
+    margin-top:445px;
+    height:50px;
+    color:black;
+}
