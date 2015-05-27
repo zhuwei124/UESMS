@@ -70,5 +70,7 @@ public class DrivinglicenseDao {
 		
 		return result;
 	}
+	//通过id删除Drivinglicense
+	//public 
 
 }

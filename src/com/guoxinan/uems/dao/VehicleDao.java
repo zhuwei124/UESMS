@@ -28,7 +28,7 @@ public class VehicleDao {
 		try {
 			while(rs.next()){
 				vehicle.setVehicleId(id);
-				vehicle.setDriveId(rs.getInt("driver_id"));
+				vehicle.setDriverId(rs.getInt("driver_id"));
 				vehicle.setVehicleCarrier(rs.getString("vehicle_carrier"));
 				vehicle.setVehicleIsDelete(rs.getBoolean("vehicle_isDelete"));
 				vehicle.setVehicleLocation(rs.getString("vehicle_location"));
@@ -44,6 +44,51 @@ public class VehicleDao {
 		}
 		
 		return vehicle;
+	}
+	//通过id删除vehicle
+	public boolean deleteVehicleById(int id){
+		boolean result = false;
+		
+		String sql = "delete from vehicle where vehicle_id = ?";
+		String [] paras = {id + ""};
+		if(sqlHelper.executeUpdate(sql, paras) > 0){
+			result = true;
+		}
+		return result;
+	}
+	//插入vehicle
+	public boolean insertVehicle(Vehicle vehicle){
+		boolean result = false;
+		
+		//判断是否存在
+		if(this.getVehicleById(vehicle.getVehicleId()).getVehicleId() != null){
+			return result;
+		}
+		
+		//处理是否删除的值
+		String idDeleted = "0";
+		if(vehicle.getVehicleIsDelete()){
+			idDeleted = "1";
+		}
+		
+		String sql = "insert into vehicle values(?,?,?,?,?,?,?,?,?,?)";
+		String [] paras = {
+				vehicle.getVehicleId() + "",
+				vehicle.getDriverId() + "",
+				vehicle.getVehicleType() + "",
+				vehicle.getVehicleNumber() + "",
+				vehicle.getVehicleStatus() + "",
+				vehicle.getVehicleRemark() + "",
+				vehicle.getVehicleCarrier() + "",
+				idDeleted + "",
+				vehicle.getVehicleRoute() + "",
+				vehicle.getVehicleLocation()
+		};
+		
+		if(sqlHelper.executeUpdate(sql, paras) > 0){
+			result = true;
+		}
+		return result;
 	}
 }
  

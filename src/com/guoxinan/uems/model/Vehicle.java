@@ -10,7 +10,7 @@ public class Vehicle {
 	// Fields
 
 	private Integer vehicleId;
-	private Integer driveId;
+	private Integer driverId;
 	private String vehicleType;
 	private String vehicleNumber;
 	private String vehicleStatus;
@@ -37,7 +37,7 @@ public class Vehicle {
 			String vehicleRemark, String vehicleCarrier,
 			Boolean vehicleIsDelete, String vehicleRoute, String vehicleLocation) {
 		this.vehicleId = vehicleId;
-		this.driveId = driveId;
+		this.driverId = driveId;
 		this.vehicleType = vehicleType;
 		this.vehicleNumber = vehicleNumber;
 		this.vehicleStatus = vehicleStatus;
@@ -58,12 +58,12 @@ public class Vehicle {
 		this.vehicleId = vehicleId;
 	}
 
-	public Integer getDriveId() {
-		return this.driveId;
+	public Integer getDriverId() {
+		return this.driverId;
 	}
 
-	public void setDriveId(Integer driveId) {
-		this.driveId = driveId;
+	public void setDriverId(Integer driveId) {
+		this.driverId = driveId;
 	}
 
 	public String getVehicleType() {

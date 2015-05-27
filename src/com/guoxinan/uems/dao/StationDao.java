@@ -44,6 +44,52 @@ public class StationDao {
 		
 		return station;
 	} 
+	
+	//通过ID删除station
+	public Boolean deleteDriverById(int id){
+		Boolean result = false;
+		
+		String sql = "delete from station where station_id = ?";
+		String []paras = {id + ""};
+		if(sqlHelper.executeUpdate(sql, paras) > 0){
+			result = true;
+		}
+		
+		return result;
+	}
+	
+	//插入station
+	public boolean insertStation(Station station){
+		boolean result = false;
+		//判断是否存在
+		if(this.getStationById(station.getStationId()).getStationId() != null){
+			return result;
+		}
+		//处理是否删除的值
+		String isDeleted = "0";
+		if(station.getStstionIsDeleted()){
+			isDeleted = "1";
+		}
+		
+		String sql = "insert into station value(?,?,?,?,?,?,?,?,?)";
+		String [] paras = {
+				station.getStationId() + "",
+				station.getCarriageCompanyId() + "",
+				station.getStationCode() + "",
+				station.getStationCorporateRepresentative() + "",
+				station.getStationAddress() + "",
+				station.getStationZipCode() + "",
+				station.getStationStatus() + "",
+				station.getStstionBriefIntroduction() + "",
+				isDeleted
+		};
+		
+		if(sqlHelper.executeUpdate(sql, paras) > 0){
+			result = true;
+		}
+		
+		return result;
+	}
 
 }
  

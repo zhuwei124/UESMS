@@ -3,6 +3,7 @@ package com.guoxinan.uems.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.guoxinan.uems.model.Driver;
 import com.guoxinan.uems.model.Passwordquestion;
 import com.guoxinan.uems.util.SqlHelper;
 
@@ -38,6 +39,47 @@ public class PasswordquestionDao {
 		}
 		
 		return passwordquestion;
+	}
+	
+	//通过ID删除Passwordquestion
+	public Boolean deletePasswordquestion(int id){
+		Boolean result = false;
+		
+		String sql = "delete from passwordquestion where passwordquestion_id = ?";
+		String [] paras = {id + ""};
+		if(sqlHelper.executeUpdate(sql, paras) > 0){
+			result = true;
+		}
+		
+		return result;
+	}
+	//插入passwordword
+	public Boolean insertPasswordquestion (Passwordquestion passwordquestion){
+		Boolean result = false;
+		
+		//判断是否存在
+		if(this.getPasswordquestionById(passwordquestion.getPasswordQuestionId()).getPasswordQuestionId() != null){
+			return result;
+		}
+		
+		//处理是否删除的值
+		String isDeleted = "0";
+		if(passwordquestion.getPasswordQuestionIsDeleted()){
+			isDeleted = "1";
+		}
+		
+		String sql = "insert into passwordquestion values (?,?,?,?)";
+		String [] paras = {
+				passwordquestion.getPasswordQuestionId() + "",
+				passwordquestion.getPasswordQuestionContent() + "",
+				passwordquestion.getPasswordQuestionAnswer() + "",
+				isDeleted
+		};
+		
+		if(sqlHelper.executeUpdate(sql, paras) > 0){
+			result = true;
+		}
+		return result;
 	}
 
 }
