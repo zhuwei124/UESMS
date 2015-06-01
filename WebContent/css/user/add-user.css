@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+.top h1{
+	text-align: center;
+}
+.line{
+	width: 900px;
+	border-top: 1px solid gray;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+.content{
+	border: 1px;
+	width: 900px;
+	height: 450px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.content div{
+	float: left;
+}
+.submit{
+	width:900px;
+	text-align:center;
+	clear:both;
+}
+.submit button{
+	width:200px;
+}
